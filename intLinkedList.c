@@ -11,6 +11,10 @@ int size(intLinkedList list) {
     int r=0;
     
     // TODO Implementa il corpo della funzione
+    while(list!=NULL){
+	r++;
+	list=list->next;
+    }
     
     return r;
 }
@@ -24,6 +28,13 @@ int size(intLinkedList list) {
 intLinkedList insertAtBeginning(intLinkedList list, int newKey) {
     
     // TODO Implementa il corpo della funzione
+    intLLElement *nelement;
+    nelement=(intLLElement *)malloc(sizeof(intLLElement));
+    if(nelement!=NULL){
+        nelement->next=list;
+        nelement->key=newKey;
+        list=nelement;
+    }
     
     return list;
 }
@@ -40,6 +51,10 @@ intLinkedList insertAtBeginning(intLinkedList list, int newKey) {
 void printList(intLinkedList list) {
     
     // TODO Implementa il corpo della funzione
+    while(list!=NULL){
+        printf("%d; ",list->key);
+        list=list->next;
+    }
     
     return;
 }
@@ -52,6 +67,12 @@ void printList(intLinkedList list) {
 intLinkedList empty(intLinkedList list) {
     
     // TODO Implementa il corpo della funzione
+    intLLElement *temp;
+    while(list!=NULL){
+        temp=list;
+	list=list->next;
+	free(temp);
+    }
     
     return NULL;
 }
